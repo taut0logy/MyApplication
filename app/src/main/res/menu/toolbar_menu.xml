@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="Search"
+        android:icon="@drawable/baseline_search_24"
+        android:id="@+id/search"
+        app:showAsAction="always"
+        />
+    <item
+        android:title="Profile"
+        android:icon="@drawable/baseline_person_24"
+        android:id="@+id/profile"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:title="About"
+        android:icon="@drawable/baseline_question_mark_24"
+        android:id="@+id/about"
+        app:showAsAction="never"
+        />
+</menu>
