@@ -16,4 +16,13 @@
         android:textSize="40sp"
         />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="Name"
+        android:textSize="20sp"
+        android:layout_marginTop="50dp"/>
+
+
 </FrameLayout>

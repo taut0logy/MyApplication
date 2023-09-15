@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private NavigationView nav;
     private Toolbar toolbar;
-    ActionBar actionbar;
+    private ActionBar actionbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+        load(new HomeFragment());
+
+
     }
 
     private void load(Fragment fragment){
