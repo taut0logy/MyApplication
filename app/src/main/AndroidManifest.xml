@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".InputActivity"
+            android:name=".SigninActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"

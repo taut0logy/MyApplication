@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -28,21 +29,25 @@ public class LoginActivity extends AppCompatActivity {
         //add user to database
         database.getReference().child("users").child("1").setValue(user);
 
+        etEmail=findViewById(R.id.et_email);
+        etPassword=findViewById(R.id.et_password);
         btnLogin=findViewById(R.id.btn_login);
         btnLogin.setOnClickListener(v-> {
-            String email = etEmail.getText().toString();
-            String password = etPassword.getText().toString();
+            String email= etEmail.getText().toString();
+            String password= etPassword.getText().toString();
             User newUser=new User("Ahsan",email,password);
             database.getReference().child("users").child("2").setValue(newUser);
         });
 
+        TextView tv=findViewById(R.id.tv_register);
         //DataSnapshot dataSnapshot= database.getReference().child("users").child("1").get().getResult();
         //System.out.println(dataSnapshot.getValue(User.class));
         database.getReference().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user=snapshot.getValue(User.class);
-                System.out.println(user);
+                User user=snapshot.child("users").child("1").getValue(User.class);
+                assert user != null;
+                tv.setText(user.toString());
             }
 
             @Override
