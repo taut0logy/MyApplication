@@ -18,12 +18,15 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private NavigationView nav;
     private Toolbar toolbar;
     private ActionBar actionbar;
+
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawer,toolbar,R.string.open,R.string.close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        mAuth=FirebaseAuth.getInstance();
 
         load(new HomeFragment());
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -79,6 +84,12 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 } else if(id==R.id.about) {
                     Toast.makeText(MainActivity.this,"Created by me",Toast.LENGTH_SHORT).show();
+                } else if(id==R.id.signout) {
+                    Toast.makeText(MainActivity.this,"Signed out",Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(MainActivity.this,SigninActivity.class);
+                    mAuth.signOut();
+                    startActivity(intent);
+                    finish();
                 }
                 return true;
             }
@@ -111,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         } else if(id==R.id.about) {
             Toast.makeText(MainActivity.this,"Created by me",Toast.LENGTH_SHORT).show();
         }
+
         return super.onOptionsItemSelected(item);
     }
 

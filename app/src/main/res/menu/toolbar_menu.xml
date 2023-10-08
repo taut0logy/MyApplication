@@ -14,6 +14,12 @@
         app:showAsAction="ifRoom"
         />
     <item
+        android:title="Sign Out"
+        android:icon="@drawable/baseline_exit_to_app_24"
+        android:id="@+id/signout"
+        app:showAsAction="never"
+        />
+    <item
         android:title="About"
         android:icon="@drawable/baseline_question_mark_24"
         android:id="@+id/about"
