@@ -17,4 +17,5 @@
     <color name="light_red">#FFFF5252</color>
     <color name="light_yellow">#FFFFD740</color>
     <color name="medium_blue">#FF2196F3</color>
+    <color name="very_light_blue">#89DFEA</color>
 </resources>

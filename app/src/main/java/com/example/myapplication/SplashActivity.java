@@ -20,7 +20,7 @@ public class SplashActivity extends AppCompatActivity {
         Animation animation= AnimationUtils.loadAnimation(this,R.anim.welcome_anim);
         animation.setStartOffset(500);
         tv.startAnimation(animation);
-        Intent i=new Intent(SplashActivity.this,MainActivity.class);
+        Intent i=new Intent(SplashActivity.this,LoginActivity.class);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
