@@ -3,26 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/very_light_blue"
     tools:context=".HomeFragment"
     android:layout_marginTop="?attr/actionBarSize">
 
     <TextView
+        android:id="@+id/text_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Home"
-        android:textSize="40sp"
-        />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:hint="Name"
-        android:textSize="20sp"
-        android:layout_marginTop="50dp"/>
-
+        android:textSize="40sp" />
 
 
 </FrameLayout>

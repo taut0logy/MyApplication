@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this,"Created by me",Toast.LENGTH_SHORT).show();
                 } else if(id==R.id.signout) {
                     Toast.makeText(MainActivity.this,"Signed out",Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(MainActivity.this,SigninActivity.class);
+                    Intent intent=new Intent(MainActivity.this,SplashActivity.class);
                     mAuth.signOut();
                     startActivity(intent);
                     finish();

@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,6 +63,9 @@ public class SigninActivity extends AppCompatActivity {
                         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task1 -> {
                             if(task1.isSuccessful()) {
                                 Toast.makeText(this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
+                                Intent i=new Intent(SigninActivity.this,MainActivity.class);
+                                i.putExtra("Extra_user",user);
+                                startActivity(i);
                             } else {
                                 Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show();
                             }

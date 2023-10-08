@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,25 +24,33 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         TextView tv=findViewById(R.id.tvSplash);
+
+
         FirebaseAuth mAuth=FirebaseAuth.getInstance();
-        ImageView load=findViewById(R.id.ivLoad);
 
         Animation welcomeAnimation= AnimationUtils.loadAnimation(this,R.anim.welcome_anim);
-        Animation spinAnimation= AnimationUtils.loadAnimation(this,R.anim.loadspin);
+        Animation rightAnimation= AnimationUtils.loadAnimation(this,R.anim.appear_from_right);
+        Animation leftAnimation= AnimationUtils.loadAnimation(this,R.anim.appear_from_left);
+
+        Button sign=findViewById(R.id.splash_Signin);
+        Button reg=findViewById(R.id.splash_Register);
+
+        sign.setVisibility(View.GONE);
+        reg.setVisibility(View.GONE);
 
         welcomeAnimation.setStartOffset(500);
         tv.startAnimation(welcomeAnimation);
 
         Intent i=new Intent(SplashActivity.this,SigninActivity.class);
         Intent i2=new Intent(SplashActivity.this,MainActivity.class);
+        Intent i3=new Intent(SplashActivity.this,LoginActivity.class);
+
         final FirebaseUser[] user = new FirebaseUser[1];
-        load.setVisibility(View.INVISIBLE);
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 user[0] =mAuth.getCurrentUser();
-                load.setVisibility(View.VISIBLE);
-                load.startAnimation(spinAnimation);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -51,13 +60,23 @@ public class SplashActivity extends AppCompatActivity {
                             finish();
                         }
                         else {
-                            startActivity(i);
-                            finish();
+                            sign.setVisibility(View.VISIBLE);
+                            reg.setVisibility(View.VISIBLE);
+                            sign.startAnimation(leftAnimation);
+                            reg.startAnimation(rightAnimation);
+                            sign.setOnClickListener(v-> {
+                                startActivity(i3);
+                                finish();
+                            });
+                            reg.setOnClickListener(v-> {
+                                startActivity(i);
+                                finish();
+                            });
                         }
                     }
                 },1500);
             }
-        },2000);
+        },1000);
 
 
     }
