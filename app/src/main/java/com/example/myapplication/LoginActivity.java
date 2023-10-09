@@ -58,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Intent i=new Intent(LoginActivity.this,MainActivity.class);
                                 i.putExtra("Extra_user",user);
                                 startActivity(i);
+                                finish();
                             }
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {

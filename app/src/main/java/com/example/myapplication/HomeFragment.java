@@ -56,6 +56,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        tvName = view.findViewById(R.id.text_home);
         // Inflate the layout for this fragment
         currentUser=mAuth.getCurrentUser();
         if(currentUser!=null) {
@@ -65,6 +66,9 @@ public class HomeFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     user=snapshot.getValue(User.class);
                     assert user != null;
+                    String name;
+                    name = user.getName();
+                    tvName.setText("Welcome " + name + "!");
                     Log.e("HomeFragment", "OnDataChange " + user);
                 }
 
@@ -75,16 +79,10 @@ public class HomeFragment extends Fragment {
                 }
             });
         }
-        String name;
-        if(user != null) {
-            name = user.getName();
-        } else {
-            name = "User";
 
-        }
         Log.e("HomeFragment", "onCreateView" + user);
-        tvName = view.findViewById(R.id.text_home);
-        tvName.setText("Welcome " + name + "!");
+
+
         return view;
     }
 

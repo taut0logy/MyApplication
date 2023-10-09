@@ -66,6 +66,7 @@ public class SigninActivity extends AppCompatActivity {
                                 Intent i=new Intent(SigninActivity.this,MainActivity.class);
                                 i.putExtra("Extra_user",user);
                                 startActivity(i);
+                                finish();
                             } else {
                                 Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show();
                             }
