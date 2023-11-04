@@ -23,6 +23,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+
         TextView tv=findViewById(R.id.tvSplash);
 
 
