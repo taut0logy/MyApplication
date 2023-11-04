@@ -26,7 +26,6 @@ import com.google.firebase.database.ValueEventListener;
 public class HomeFragment extends Fragment {
 
     private User user;
-    private TextView tvName;
     private FirebaseDatabase database;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
@@ -49,15 +48,6 @@ public class HomeFragment extends Fragment {
         Log.e("HomeFragment", "onCreate");
         database=FirebaseDatabase.getInstance();
         mAuth=FirebaseAuth.getInstance();
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        tvName = view.findViewById(R.id.text_home);
-        // Inflate the layout for this fragment
         currentUser=mAuth.getCurrentUser();
         if(currentUser!=null) {
             String uid=currentUser.getUid();
@@ -66,28 +56,35 @@ public class HomeFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     user=snapshot.getValue(User.class);
                     assert user != null;
-                    String name;
-                    name = user.getName();
-                    tvName.setText("Welcome " + name + "!");
                     Log.e("HomeFragment", "OnDataChange " + user);
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Log.e("HomeFragment", "Error: " + error);
-
                 }
             });
+        } else {
+            Log.e("HomeFragment", "onCreate: User is null");
         }
+        Log.e("HomeFragment", "end of onCreate: " + user);
+    }
 
-        Log.e("HomeFragment", "onCreateView" + user);
-
-
-        return view;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        Log.e("HomeFragment", "onCreateView");
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Log.e("HomeFragment", "onViewCreated");
+        TextView tvName=view.findViewById(R.id.text_home);
+        if(user!=null) {
+            tvName.setText("Welcome " + user.getName());
+        } else {
+            tvName.setText("Welcome");
+        }
     }
 }

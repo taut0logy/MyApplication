@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" >
     </FrameLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         app:itemIconTint="@color/dark_green"

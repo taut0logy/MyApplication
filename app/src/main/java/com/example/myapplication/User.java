@@ -49,10 +49,7 @@ public class User implements Parcelable {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "\nName: "+name+"\nEmail: "+email+"\nPassword: "+password+"\n";
     }
 
     public String getPassword() {

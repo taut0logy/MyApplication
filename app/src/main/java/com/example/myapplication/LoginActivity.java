@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                                 User user=snapshot.getValue(User.class);
                                 assert user != null;
                                 Intent i=new Intent(LoginActivity.this,MainActivity.class);
+                                new Intent(LoginActivity.this,ProfileActivity.class).putExtra("Extra_user",user);
                                 i.putExtra("Extra_user",user);
                                 startActivity(i);
                                 finish();

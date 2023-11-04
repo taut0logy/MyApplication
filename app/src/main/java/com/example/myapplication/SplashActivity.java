@@ -57,7 +57,7 @@ public class SplashActivity extends AppCompatActivity {
                         if(user[0]!=null) {
                             Toast.makeText(SplashActivity.this, "Signed in successfully", Toast.LENGTH_SHORT).show();
                             startActivity(i2);
-                            finish();
+                            SplashActivity.this.finish();
                         }
                         else {
                             sign.setVisibility(View.VISIBLE);
@@ -70,7 +70,7 @@ public class SplashActivity extends AppCompatActivity {
                             });
                             reg.setOnClickListener(v-> {
                                 startActivity(i);
-                                finish();
+                                SplashActivity.this.finish();
                             });
                         }
                     }
